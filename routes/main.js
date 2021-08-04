@@ -11,7 +11,7 @@ router.get('/about', (req,res) => {
 router.get('/blog', (req,res) => {
 
     //veritabanindaki tum postlar getirildi ve gonderildi
-    Post.find({}).then(posts => {
+    Post.find({}).lean().then(posts => {
         res.render('site/blog', {posts:posts})
     })
 })
