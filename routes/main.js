@@ -3,7 +3,10 @@ const router = express.Router()
 const Post = require('../models/Post')
 
 router.get('/', (req,res) => {
-    res.render('site/index')
+    //veritabanindaki tum postlar getirildi ve gonderildi
+    Post.find({}).lean().then(posts => {
+        res.render('site/index', {posts:posts})
+    })
 })
 router.get('/about', (req,res) => {
     res.render('site/about')
