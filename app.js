@@ -3,7 +3,7 @@ const exphbs = require("express-handlebars");
 const Handlebars = require('handlebars')
 const expressHandlebars = require('express-handlebars');
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
-
+const fileUpload = require('express-fileupload')
 
 const app = express();
 const port = 3000;
@@ -17,6 +17,7 @@ mongoose.connect("mongodb://127.0.0.1/BProject_db", {
   useUnifiedTopology: true
 });
 
+app.use(fileUpload())
 
 app.use(express.static("public"));
 
